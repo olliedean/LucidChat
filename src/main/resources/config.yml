@@ -1,0 +1,5 @@
+# currently only {player_name} and {message} are supported
+# unless you have PlaceholderAPI installed, which uses %
+# all available LucidChat placeholders can be found here:
+# %lc_tag% - the player's current tag (if any)
+format: "{player_name}: {message}"

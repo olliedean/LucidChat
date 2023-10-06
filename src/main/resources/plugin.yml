@@ -1,0 +1,25 @@
+name: LucidChat
+version: '${project.version}'
+main: cool.ollie.lucidchat.LucidChat
+api-version: '1.20'
+prefix: LucidChat
+authors: [olliedean]
+website: https://lucidstudios.co.uk
+
+depend:
+  - PlaceholderAPI
+  - Vault
+
+commands:
+  lucidchat:
+    description: Reloads the plugin
+    permission: lucidchat.admin
+    usage: /lucidchat
+
+permissions:
+  lucidchat.admin:
+    description: Allows access to the /lucidchat command
+    default: op
+  lucidchat.color:
+    description: Allows the use of color codes in chat
+    default: op
