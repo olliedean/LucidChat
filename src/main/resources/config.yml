@@ -11,3 +11,25 @@ auto-announcer:
     - "This is another test message!"
     - "This is a third test message!"
     - "This is a fourth test message!"
+
+# Use this to override commands that are already registered
+# by other plugins or the server itself. This is useful for
+# blocking commands that you don't want players to use such
+# as /pl, /plugins, /ver, /version, etc.
+override-commands:
+  commands:
+    - "pl"
+    - "plugins"
+    - "ver"
+    - "version"
+    - "icanhasbukkit"
+    - "about"
+    - "bukkit:pl"
+    - "bukkit:plugins"
+    - "bukkit:ver"
+    - "bukkit:version"
+    - "bukkit:icanhasbukkit"
+    - "bukkit:about"
+    - "minecraft:help"
+    - "?"
+  message: "&c&l✖ &cThis command is disabled!"

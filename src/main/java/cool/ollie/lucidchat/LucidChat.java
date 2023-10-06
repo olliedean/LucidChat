@@ -1,8 +1,10 @@
 package cool.ollie.lucidchat;
 
 import cool.ollie.lucidchat.commands.LCCommand;
-import cool.ollie.lucidchat.events.ChatListener;
-import cool.ollie.lucidchat.events.PlayerJoinLeaveEvents;
+import cool.ollie.lucidchat.commands.LCTabComplete;
+import cool.ollie.lucidchat.listeners.ChatListener;
+import cool.ollie.lucidchat.listeners.CommandPreprocess;
+import cool.ollie.lucidchat.listeners.PlayerJoinLeaveEvents;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -28,7 +30,9 @@ public final class LucidChat extends JavaPlugin {
         this.saveDefaultConfig();
         getServer().getPluginManager().registerEvents(new ChatListener(), this);
         getServer().getPluginManager().registerEvents(new PlayerJoinLeaveEvents(), this);
+        getServer().getPluginManager().registerEvents(new CommandPreprocess(), this);
         this.getCommand("lucidchat").setExecutor(new LCCommand());
+        this.getCommand("lucidchat").setTabCompleter(new LCTabComplete());
 
         // auto announcer
         int delay = getConfig().getInt("auto-announcer.interval");

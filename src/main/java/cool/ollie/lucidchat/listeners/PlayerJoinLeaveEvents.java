@@ -1,4 +1,4 @@
-package cool.ollie.lucidchat.events;
+package cool.ollie.lucidchat.listeners;
 
 import cool.ollie.lucidchat.LucidChat;
 import cool.ollie.lucidchat.managers.UserManager;

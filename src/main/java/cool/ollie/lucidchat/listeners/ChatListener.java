@@ -1,9 +1,7 @@
-package cool.ollie.lucidchat.events;
+package cool.ollie.lucidchat.listeners;
 
 import cool.ollie.lucidchat.LucidChat;
-import io.papermc.paper.event.player.AsyncChatEvent;
 import me.clip.placeholderapi.PlaceholderAPI;
-import net.kyori.adventure.text.Component;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
