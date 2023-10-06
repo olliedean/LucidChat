@@ -29,7 +29,11 @@ public class UserManager {
     }
 
     public String getPlayerTag(Player player) {
-        return getValue(player, "tag");
+        String tag = getValue(player, "tag");
+        if(tag == null) {
+            return null;
+        }
+        return tag;
     }
 
     public String getValue(Player player, String key) {

@@ -18,6 +18,8 @@ public class ChatListener implements Listener {
         String format = plugin.getConfig().getString("format");
         if(plugin.isPAPIEnabled) {
             format = PlaceholderAPI.setPlaceholders(player, format);
+            // reformatting the message incase any placeholders hold placeholders
+            format = PlaceholderAPI.setPlaceholders(player, format);
         }
         format = format.replace("%", "%%");
         format = format.replace("{player_name}", player.getName());
