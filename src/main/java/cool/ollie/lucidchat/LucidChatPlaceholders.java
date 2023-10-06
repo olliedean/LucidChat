@@ -33,13 +33,12 @@ public class LucidChatPlaceholders extends PlaceholderExpansion {
 
     @Override
     public String onRequest(OfflinePlayer player, String params) {
+        UserManager userManager = new UserManager();
         if(params.equalsIgnoreCase("tag")) {
-            UserManager userManager = new UserManager();
-            String tag = userManager.getPlayerTag(player.getPlayer());
-            if(tag == null) {
-                return "";
-            }
             return userManager.getPlayerTag(player.getPlayer());
+        }
+        if(params.equalsIgnoreCase("chatcolor")) {
+            return userManager.getPlayerChatColor(player.getPlayer());
         }
         return null;
     }

@@ -24,16 +24,23 @@ public class UserManager {
         if(!playerFile.exists()) {
             log.info(String.format("[%s] - Creating player file for %s", plugin.getDescription().getName(), player.getName()));
             playerFile.createNewFile();
+            YamlConfiguration playerConfig = YamlConfiguration.loadConfiguration(playerFile);
+            playerConfig.set("DO NOT DELETE", "This file is used to store player data for LucidChat. Deleting this file will result in the loss of player data.");
+            playerConfig.set("ACTUALLY", "Just don't touch this file at all.");
             log.info(String.format("[%s] - Successfully created player file for %s", plugin.getDescription().getName(), player.getName()));
         }
     }
 
     public String getPlayerTag(Player player) {
         String tag = getValue(player, "tag");
-        if(tag == null) {
-            return null;
-        }
+        if(tag == null) { return ""; }
         return tag;
+    }
+
+    public String getPlayerChatColor(Player player) {
+        String color = getValue(player, "chat_color");
+        if(color == null) { return "&f"; }
+        return color;
     }
 
     public String getValue(Player player, String key) {
