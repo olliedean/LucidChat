@@ -12,6 +12,11 @@ public class ChatListener implements Listener {
     @EventHandler
     public void onChat(AsyncPlayerChatEvent event) {
         Player player = event.getPlayer();
+        if(plugin.isMuted() && !player.hasPermission("lucidchat.bypassmute")){
+            player.sendMessage(plugin.getConfig().getString("chat-muted").replace("&", "§"));
+            event.setCancelled(true);
+            return;
+        }
         String message = event.getMessage();
         String format = plugin.getConfig().getString("format");
         if(plugin.isPAPIEnabled) {

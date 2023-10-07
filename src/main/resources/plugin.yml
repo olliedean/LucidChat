@@ -8,7 +8,6 @@ website: https://lucidstudios.co.uk
 
 depend:
   - PlaceholderAPI
-  - Vault
 
 commands:
   lucidchat:
@@ -20,6 +19,14 @@ commands:
     description: Clears the chat
     permission: lucidchat.clear
     usage: /clearchat
+  mutechat:
+    description: Mutes the chat
+    permission: lucidchat.mutechat
+    usage: /mutechat
+  icons:
+    description: Shows a list of available icons
+    permission: lucidchat.icons
+    usage: /icons
 
 permissions:
   lucidchat.admin:
@@ -30,4 +37,13 @@ permissions:
     default: op
   lucidchat.clear:
     description: Allows access to the /clearchat command
+    default: op
+  lucidchat.mutechat:
+    description: Allows access to the /mutechat command
+    default: op
+  lucidchat.bypassmute:
+    description: Allows the player to bypass the chat mute
+    default: op
+  lucidchat.icons:
+    description: Allows access to the /icons command
     default: op

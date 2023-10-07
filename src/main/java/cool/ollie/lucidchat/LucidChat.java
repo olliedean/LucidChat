@@ -1,11 +1,11 @@
 package cool.ollie.lucidchat;
 
-import cool.ollie.lucidchat.commands.ClearChatCommand;
-import cool.ollie.lucidchat.commands.LCCommand;
-import cool.ollie.lucidchat.commands.LCTabComplete;
+import cool.ollie.lucidchat.commands.*;
 import cool.ollie.lucidchat.listeners.ChatListener;
 import cool.ollie.lucidchat.listeners.CommandPreprocess;
 import cool.ollie.lucidchat.listeners.PlayerJoinLeaveEvents;
+import cool.ollie.lucidchat.managers.TagManager;
+import mc.obliviate.inventory.InventoryAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -16,6 +16,9 @@ import java.util.logging.Logger;
 public final class LucidChat extends JavaPlugin {
     private static final Logger log = Logger.getLogger("Minecraft");
     public boolean isPAPIEnabled = false;
+    public boolean isMuted = false;
+
+    public TagManager tagManager;
 
     @Override
     public void onEnable() {
@@ -24,6 +27,10 @@ public final class LucidChat extends JavaPlugin {
             log.info(String.format("[%s] - PlaceholderAPI found, enabling placeholders!", getDescription().getName()));
             log.info(String.format("[%s] - Enabling custom placeholders.", getDescription().getName()));
             new LucidChatPlaceholders(this).register();
+            new InventoryAPI(this).init();
+            tagManager = new TagManager();
+            tagManager.firstTimeTags();
+            tagManager.reloadTags();
         } else {
             log.info(String.format("[%s] - PlaceholderAPI not found, disabling placeholders!", getDescription().getName()));
         }
@@ -35,6 +42,8 @@ public final class LucidChat extends JavaPlugin {
         this.getCommand("lucidchat").setExecutor(new LCCommand());
         this.getCommand("lucidchat").setTabCompleter(new LCTabComplete());
         this.getCommand("clearchat").setExecutor(new ClearChatCommand());
+        this.getCommand("mutechat").setExecutor(new MuteChatCommand());
+        this.getCommand("icons").setExecutor(new IconsCommand());
 
         // auto announcer
         int delay = getConfig().getInt("auto-announcer.interval");
@@ -64,5 +73,13 @@ public final class LucidChat extends JavaPlugin {
     @Override
     public void onDisable() {
         // Plugin shutdown logic
+    }
+
+    public boolean isMuted() {
+        return isMuted;
+    }
+
+    public void setMuted(boolean muted) {
+        isMuted = muted;
     }
 }

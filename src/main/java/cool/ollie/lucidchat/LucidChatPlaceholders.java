@@ -1,11 +1,12 @@
 package cool.ollie.lucidchat;
 
+import cool.ollie.lucidchat.managers.TagManager;
 import cool.ollie.lucidchat.managers.UserManager;
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
 import org.bukkit.OfflinePlayer;
 
 public class LucidChatPlaceholders extends PlaceholderExpansion {
-    private final LucidChat plugin;
+    LucidChat plugin;
 
     public LucidChatPlaceholders(LucidChat plugin) {
         this.plugin = plugin;
@@ -34,11 +35,15 @@ public class LucidChatPlaceholders extends PlaceholderExpansion {
     @Override
     public String onRequest(OfflinePlayer player, String params) {
         UserManager userManager = new UserManager();
+        TagManager tagManager = plugin.tagManager;
         if(params.equalsIgnoreCase("tag")) {
             return userManager.getPlayerTag(player.getPlayer());
         }
         if(params.equalsIgnoreCase("chatcolor")) {
             return userManager.getPlayerChatColor(player.getPlayer());
+        }
+        if(params.equalsIgnoreCase("icon")) {
+            return tagManager.parseIcon(player.getPlayer(), userManager.getPlayerIcon(player.getPlayer()));
         }
         return null;
     }

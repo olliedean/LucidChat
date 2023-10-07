@@ -25,8 +25,6 @@ public class UserManager {
             log.info(String.format("[%s] - Creating player file for %s", plugin.getDescription().getName(), player.getName()));
             playerFile.createNewFile();
             YamlConfiguration playerConfig = YamlConfiguration.loadConfiguration(playerFile);
-            playerConfig.set("DO NOT DELETE", "This file is used to store player data for LucidChat. Deleting this file will result in the loss of player data.");
-            playerConfig.set("ACTUALLY", "Just don't touch this file at all.");
             log.info(String.format("[%s] - Successfully created player file for %s", plugin.getDescription().getName(), player.getName()));
         }
     }
@@ -35,6 +33,12 @@ public class UserManager {
         String tag = getValue(player, "tag");
         if(tag == null) { return ""; }
         return tag;
+    }
+
+    public String getPlayerIcon(Player player) {
+        String icon = getValue(player, "icon");
+        if(icon == null) { return ""; }
+        return icon;
     }
 
     public String getPlayerChatColor(Player player) {
@@ -52,5 +56,19 @@ public class UserManager {
     public File getPlayerFile(Player player) {
         File playerFile = new File(plugin.getDataFolder(), "/players/" + player.getUniqueId().toString() + ".yml");
         return playerFile;
+    }
+
+    public void setPlayerIcon(Player player, String icon) throws IOException {
+        File playerFile = getPlayerFile(player);
+        YamlConfiguration playerConfig = YamlConfiguration.loadConfiguration(playerFile);
+        playerConfig.set("icon", icon);
+        playerConfig.save(playerFile);
+    }
+
+    public void setPlayerTag(Player player, String tag) throws IOException {
+        File playerFile = getPlayerFile(player);
+        YamlConfiguration playerConfig = YamlConfiguration.loadConfiguration(playerFile);
+        playerConfig.set("tag", tag);
+        playerConfig.save(playerFile);
     }
 }

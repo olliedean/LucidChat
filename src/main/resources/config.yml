@@ -1,11 +1,13 @@
 # currently only {player_name} and {message} are supported
 # unless you have PlaceholderAPI installed, which uses %
 # all available LucidChat placeholders can be found here:
-# %lc_tag% - the player's current tag (if any)
+# %lucidchat_tag% - the player's current tag (if any)
+# %lucidchat_chatcolor% - the player's current chat color (if any)
+# %lucidchat_icon% - the player's current icon (if any)
 format: "{player_name}: {message}"
 
 prefix: "&b&lCHAT &f&l| &f"
-
+chat-muted: "&c&l✖ &The chat is currently muted!"
 
 auto-announcer:
   interval: 60 # in seconds. set to 0 to disable

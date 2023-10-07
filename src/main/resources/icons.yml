@@ -1,0 +1,4 @@
+icons:
+  bee:
+    permission: "lucidchat.icon.bee"
+    display: '%oraxen_bee%'
