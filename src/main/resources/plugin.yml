@@ -15,6 +15,11 @@ commands:
     description: Reloads the plugin
     permission: lucidchat.admin
     usage: /lucidchat
+    aliases: [lc]
+  clearchat:
+    description: Clears the chat
+    permission: lucidchat.clear
+    usage: /clearchat
 
 permissions:
   lucidchat.admin:
@@ -22,4 +27,7 @@ permissions:
     default: op
   lucidchat.color:
     description: Allows the use of color codes in chat
+    default: op
+  lucidchat.clear:
+    description: Allows access to the /clearchat command
     default: op

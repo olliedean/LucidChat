@@ -1,5 +1,6 @@
 package cool.ollie.lucidchat;
 
+import cool.ollie.lucidchat.commands.ClearChatCommand;
 import cool.ollie.lucidchat.commands.LCCommand;
 import cool.ollie.lucidchat.commands.LCTabComplete;
 import cool.ollie.lucidchat.listeners.ChatListener;
@@ -33,6 +34,7 @@ public final class LucidChat extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new CommandPreprocess(), this);
         this.getCommand("lucidchat").setExecutor(new LCCommand());
         this.getCommand("lucidchat").setTabCompleter(new LCTabComplete());
+        this.getCommand("clearchat").setExecutor(new ClearChatCommand());
 
         // auto announcer
         int delay = getConfig().getInt("auto-announcer.interval");

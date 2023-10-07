@@ -3,6 +3,10 @@
 # all available LucidChat placeholders can be found here:
 # %lc_tag% - the player's current tag (if any)
 format: "{player_name}: {message}"
+
+prefix: "&b&lCHAT &f&l| &f"
+
+
 auto-announcer:
   interval: 60 # in seconds. set to 0 to disable
   prefix: "&7[&cAnnouncement&7]"
