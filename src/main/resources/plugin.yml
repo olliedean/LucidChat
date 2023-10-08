@@ -27,6 +27,10 @@ commands:
     description: Shows a list of available icons
     permission: lucidchat.icons
     usage: /icons
+  tags:
+    description: Shows a list of available tags
+    permission: lucidchat.tags
+    usage: /tags
 
 permissions:
   lucidchat.admin:
@@ -46,4 +50,7 @@ permissions:
     default: op
   lucidchat.icons:
     description: Allows access to the /icons command
+    default: op
+  lucidchat.tags:
+    description: Allows access to the /tags command
     default: op

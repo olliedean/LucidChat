@@ -39,10 +39,18 @@ public class IconGUI extends Gui {
                             try {
                                 new UserManager().setPlayerIcon(player, (String) icon.get(0));
                                 log.info(String.format("[%s] - %s has selected the icon %s", plugin.getDescription().getName(), player.getName(), icon.get(0).toString()));
+                                player.sendMessage(String.format("%s§aYou have selected the icon: %s",
+                                        plugin.getConfig().get("prefix"),
+                                        icon.get(0).toString()
+                                        ).replace("&", "§")
+                                );
                             } catch (IOException ex) {
                                 log.severe(String.format("[%s] - Error setting player icon for %s", plugin.getDescription().getName(), player.getName()));
+                                player.sendMessage("§cAn error occurred whilst setting your icon");
                             }
                             player.closeInventory();
+                        } else {
+                            player.sendMessage(String.format("%s§cYou do not have permission to use this icon", plugin.getConfig().get("prefix")).replace("&", "§"));
                         }
                     });
             addItem(i, iconItem);

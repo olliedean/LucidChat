@@ -44,7 +44,7 @@ public class TagManager {
         ConfigurationSection iconsSection = iconsConfig.getConfigurationSection("icons");
         for(String key : tagsSection.getKeys(false)) {
             List<String> tag = new ArrayList();
-            tag.add(tagsSection.getString(key));
+            tag.add(key);
             tag.add(tagsSection.getString(key + ".permission"));
             tag.add(tagsSection.getString(key + ".display"));
             tags.add(tag);
@@ -73,7 +73,26 @@ public class TagManager {
         
         return string;
     }
+
+public String parseTag(Player player, String key) {
+        String display = null;
+        for(int i = 0; i < tags.size(); i++) {
+            List tag = (List) tags.get(i);
+            if(tag.get(0).toString().equals(key)) {
+                display = tag.get(2).toString();
+            }
+        }
+
+        String string = PlaceholderAPI.setPlaceholders(player, display);
+        string = string.replace("&", "§");
+
+        return string;
+    }
+
     public List getIcons() {
         return icons;
+    }
+    public List getTags() {
+        return tags;
     }
 }

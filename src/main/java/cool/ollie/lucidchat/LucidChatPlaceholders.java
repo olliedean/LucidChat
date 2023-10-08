@@ -37,7 +37,7 @@ public class LucidChatPlaceholders extends PlaceholderExpansion {
         UserManager userManager = new UserManager();
         TagManager tagManager = plugin.tagManager;
         if(params.equalsIgnoreCase("tag")) {
-            return userManager.getPlayerTag(player.getPlayer());
+            return tagManager.parseTag(player.getPlayer(), userManager.getPlayerTag(player.getPlayer()));
         }
         if(params.equalsIgnoreCase("chatcolor")) {
             return userManager.getPlayerChatColor(player.getPlayer());

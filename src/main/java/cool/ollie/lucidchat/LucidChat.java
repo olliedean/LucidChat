@@ -44,6 +44,7 @@ public final class LucidChat extends JavaPlugin {
         this.getCommand("clearchat").setExecutor(new ClearChatCommand());
         this.getCommand("mutechat").setExecutor(new MuteChatCommand());
         this.getCommand("icons").setExecutor(new IconsCommand());
+        this.getCommand("tags").setExecutor(new TagsCommand());
 
         // auto announcer
         int delay = getConfig().getInt("auto-announcer.interval");
